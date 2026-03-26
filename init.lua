@@ -18,6 +18,22 @@ vim.o.number = true
 --  Experiment for yourself to see if you like it!
 vim.o.relativenumber = true
 
+-- Set tabs as spaces
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.shiftwidth = 4 -- size of indent
+vim.opt.tabstop = 4 -- number of spaces tabs count for
+vim.opt.softtabstop = 4 -- number of spaces a tab counts for while editing
+
+-- Make tab sizes 2 in these files
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "yaml", "yml", "lua" },
+	callback = function()
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
+	end,
+})
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
 
@@ -31,6 +47,19 @@ vim.o.showmode = false
 -- vim.schedule(function()
 -- 	vim.o.clipboard = "unnamedplus"
 -- end)
+
+-- copy from remote host to local clipboard
+vim.g.clipboard = {
+	name = "OSC 52",
+	copy = {
+		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+	},
+	paste = {
+		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+	},
+}
 
 -- Enable break indent
 vim.o.breakindent = true
