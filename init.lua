@@ -206,6 +206,8 @@ rtp:prepend(lazypath)
 require("lazy").setup({
 	-- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
 	{ "NMAC427/guess-indent.nvim", opts = {} },
+
+	-- CSV Viewer
 	{
 		"emmanueltouzery/decisive.nvim",
 		config = function()
@@ -223,37 +225,35 @@ require("lazy").setup({
 			},
 		},
 	},
-	-- Alternatively, use `config = function() ... end` for full control over the configuration.
-	-- If you prefer to call `setup` explicitly, use:
-	--    {
-	--        'lewis6991/gitsigns.nvim',
-	--        config = function()
-	--            require('gitsigns').setup({
-	--                -- Your gitsigns configuration here
-	--            })
-	--        end,
-	--    }
-	--
-	-- Here is a more advanced example where we pass configuration
-	-- options to `gitsigns.nvim`.
-	--
-	-- See `:help gitsigns` to understand what the configuration keys do
-	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
-		"lewis6991/gitsigns.nvim",
-		---@module 'gitsigns'
-		---@type Gitsigns.Config
-		---@diagnostic disable-next-line: missing-fields
-		opts = {
-			signs = {
-				add = { text = "+" }, ---@diagnostic disable-line: missing-fields
-				change = { text = "~" }, ---@diagnostic disable-line: missing-fields
-				delete = { text = "_" }, ---@diagnostic disable-line: missing-fields
-				topdelete = { text = "‾" }, ---@diagnostic disable-line: missing-fields
-				changedelete = { text = "~" }, ---@diagnostic disable-line: missing-fields
-			},
-		},
+
+	-- In-buffer markdown viewer
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
 	},
 
+	-- File tree
+	-- {
+	-- 	"nvim-mini/mini.files",
+	-- 	version = "*",
+	-- 	config = function()
+	-- 		require("mini.files").setup({})
+	-- 	end,
+	-- 	keys = {
+	-- 		"<leader>f",
+	-- 		function()
+	-- 			require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+	-- 		end,
+	-- 		desc = "Open mini.files (directory of current file)",
+	-- 	},
+	-- 	{
+	-- 		"<leader>F",
+	-- 		function()
+	-- 			require("mini.files").open(vim.loop.cwd(), true)
+	-- 		end,
+	-- 		desc = "Open mini.files (cwd)",
+	-- 	},
+	-- },
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
 	-- This is often very useful to both group configuration, as well as handle
@@ -690,8 +690,7 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
+				python = { "ruff_format" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
