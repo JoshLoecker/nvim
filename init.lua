@@ -26,6 +26,11 @@ vim.opt.shiftwidth = 4 -- size of indent
 vim.opt.tabstop = 4 -- number of spaces tabs count for
 vim.opt.softtabstop = 4 -- number of spaces a tab counts for while editing
 
+-- turn off the bell
+vim.opt.belloff = "all"
+vim.opt.visualbell = false
+vim.opt.errorbells = false
+
 -- Register snakemake extensions
 vim.filetype.add({
 	extension = { smk = "snakemake" },
