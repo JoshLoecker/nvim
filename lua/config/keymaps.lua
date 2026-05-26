@@ -46,3 +46,5 @@ map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 -- use option+cmd+page up/down to scroll buffer
 map({ "n", "i", "v" }, "<M-PageDown>", "<C-e>", { noremap = true, desc = "Scroll down (no cursor move)" })
 map({ "n", "i", "v" }, "<M-PageUp>", "<C-y>", { noremap = true, desc = "Scroll up (no cursor move)" })
+
+-- use option+hjkl in normal mode to switch buffers
