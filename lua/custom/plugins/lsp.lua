@@ -119,6 +119,15 @@ return {
 		--  See `:help lsp-config` for information about keys and how to configure
 		---@type table<string, vim.lsp.Config>
 		local servers = {
+			bashls = {},
+			pyrefly = {
+				cmd = { "pyrefly", "lsp" },
+				filetypes = { "python" },
+				root_markers = { "pyproject.toml", "pyrefly.toml", ".git" },
+			},
+			taplo = {
+				root_markers = { "starship.toml", ".git" },
+			},
 			-- clangd = {},
 			-- gopls = {},
 			-- pyright = {},
@@ -176,7 +185,9 @@ return {
 		-- You can press `g?` for help in this menu.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			-- You can add other tools here that you want Mason to install
+			"shellcheck",
+			"shfmt",
+			"taplo",
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
