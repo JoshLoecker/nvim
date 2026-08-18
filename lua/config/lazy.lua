@@ -8,6 +8,7 @@
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
+	{ "saghen/blink.lib", lazy = false },
 	{ "NMAC427/guess-indent.nvim", opts = {} },
 	{ "OXY2DEV/markview.nvim", lazy = true }, -- in-buffer markdown viewer
 	{ import = "custom.plugins" },
