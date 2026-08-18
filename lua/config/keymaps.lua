@@ -47,4 +47,31 @@ map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 map({ "n", "i", "v" }, "<M-PageDown>", "<C-e>", { noremap = true, desc = "Scroll down (no cursor move)" })
 map({ "n", "i", "v" }, "<M-PageUp>", "<C-y>", { noremap = true, desc = "Scroll up (no cursor move)" })
 
+-- python debugging keymaps (dap-python)
+map("n", "<leader>dn", function()
+	require("dap-python").test_method()
+end, { desc = "Debug test method" })
+map("n", "<leader>df", function()
+	require("dap-python").test_class()
+end, { desc = "Debug test class" })
+map("v", "<leader>ds", function()
+	require("dap-python").debug_selection()
+end, { desc = "Debug selection" })
+
 -- use option+hjkl in normal mode to switch buffers
+
+-- use option+up-arrow or option+k to move line up
+vim.keymap.set("n", "<M-Up>", ":m .-2<CR>==", { desc = "Move line up", silent = true })
+vim.keymap.set("n", "<M-k>", ":m .-2<CR>==", { desc = "Move line up", silent = true })
+vim.keymap.set("i", "<M-Up>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up", silent = true })
+vim.keymap.set("i", "<M-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up", silent = true })
+vim.keymap.set("v", "<M-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
+vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
+
+-- use option+down-arrow or option+j to move line down
+vim.keymap.set("n", "<M-Down>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
+vim.keymap.set("n", "<M-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
+vim.keymap.set("i", "<M-Down>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down", silent = true })
+vim.keymap.set("i", "<M-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down", silent = true })
+vim.keymap.set("v", "<M-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
+vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
