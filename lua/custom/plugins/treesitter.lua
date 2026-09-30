@@ -20,6 +20,7 @@ return {
 			"snakemake",
 		}
 		require("nvim-treesitter").install(parsers)
+		vim.treesitter.language.register("snakemake", { "snakemake" })
 		vim.api.nvim_create_autocmd("FileType", {
 			callback = function(args)
 				local buf, filetype = args.buf, args.match
