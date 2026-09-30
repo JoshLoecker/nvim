@@ -188,6 +188,11 @@ return {
 			"shellcheck",
 			"shfmt",
 			"taplo",
+			-- Formatters used by conform.nvim (see format.lua)
+			"stylua",
+			"prettier",
+			"ruff",
+			"jq",
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

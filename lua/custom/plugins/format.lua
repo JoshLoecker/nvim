@@ -1,8 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	dependencies = {
-		"WhoIsSethDaniel/mason-tool-installer.nvim"
-	},
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	keys = {
@@ -15,16 +12,6 @@ return {
 			desc = "[F]ormat buffer",
 		},
 	},
-	config = function()
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				"stylua",
-				"prettier",
-				"ruff",
-				"jq"
-			}
-		})
-	end,
 	---@module 'conform'
 	---@type conform.setupOpts
 	opts = {
