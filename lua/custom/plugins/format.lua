@@ -48,6 +48,11 @@ return {
 			jq = {
 				prepend_args = { "--indent", "2" },
 			},
+			prettier = {
+				-- prefer-file makes prettier ignore these flags when the project
+				-- has its own prettier config, so they act as fallback defaults.
+				prepend_args = { "--config-precedence", "prefer-file", "--print-width", "120" },
+			},
 		},
 	},
 }
